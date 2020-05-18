@@ -7,16 +7,26 @@
 
 def palindrom(n):
     """Поиск числа фибоначчи.
-
     :param n: Число.
     :return: Bool. True или False. Является ли число палиндромом.
     """
 
     # write your code here
-    return ''  # write return value here
+    n_0 = n  # сохраняем исходное число в n_0
+    pal_num = 0  # инициализируем будущее перевернутое num
+
+    while n:
+        rest = n % 10
+        n = n // 10
+        pal_num = pal_num * 10 + rest
+
+    if pal_num == n_0:
+        return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
     # здесь можно сделать ввод из консоли и проверить работу функции
-    n = 0
+    n = int(input("Введите целое положительное число:"))
     print(palindrom(n))

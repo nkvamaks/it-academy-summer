@@ -14,10 +14,14 @@ def sub_string(str_):
     """
 
     # write your code here
-    return ''  # write return value here
+    str_1 = ''
+    for char in str_:
+        if (char not in str_1) & (char != ' '):
+            str_1 += char
+    return str_1  # write return value here
 
 
 if __name__ == '__main__':
     # здесь можно сделать ввод из консоли и проверить работу функции
-    str_ = ''
+    str_ = input("Введите строку: ")
     print(sub_string(str_))

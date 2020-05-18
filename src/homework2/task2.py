@@ -14,10 +14,20 @@ def longest_word(str_):
     """
 
     # write your code here
-    return ''  # write return value here
+    prep = '.,?!:;\'"'
+    for char in str_:  # убираем знаки препинания
+        if char in prep:
+            str_ = str_.replace(char, '')
+    lst = str_.split()  # превращаем в список
+    max_len = 0
+    max_index = 0
+    for index, word in enumerate(lst):  # ищем самое длинное слово
+        if len(word) > max_len:
+            max_index, max_len = index, len(word)
+    return lst[max_index]  # write return value here
 
 
 if __name__ == '__main__':
     # здесь можно сделать ввод из консоли и проверить работу функции
-    str_ = ''
+    str_ = input("Введите строку: ")
     print(longest_word(str_))
