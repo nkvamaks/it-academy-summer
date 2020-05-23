@@ -14,11 +14,11 @@ def longest_word(str_):
         несколько, самое левое в строке).
     """
     # write your code here
-    prep = '.,?!:;\'"'
-    for char in str_:  # убираем знаки препинания
-        if char in prep:
-            str_ = str_.replace(char, '')
-    lst = str_.split()  # превращаем в список
+    str_1 = ''
+    for char in str_:  # убираем все не буквы и не пробелы
+        if char.isalpha() or char.isspace():
+            str_1 += char
+    lst = str_1.split()  # отделяем каждое слово
     max_len = 0
     max_index = 0
     for index, word in enumerate(lst):  # ищем самое длинное слово
