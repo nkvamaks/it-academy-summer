@@ -15,9 +15,9 @@ def sub_string(str_):
     """
     # write your code here
     str_1 = ''
-    for char in str_:
-        if (char not in str_1) & (char != ' '):
-            str_1 += char
+    for char in str_:  # проверяем, не повторяется ли символ и не пробел ли это
+        if (char not in str_1) and (char != ' '):
+            str_1 += char  # новая строка уникальных символов без пробелов
     return str_1  # write return value here
 
 
