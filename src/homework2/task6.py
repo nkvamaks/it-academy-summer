@@ -9,21 +9,21 @@
 
 
 def palindrom(n):
-    """Поиск числа фибоначчи.
+    """Поиск палиндрома.
 
     :param n: Число.
     :return: Bool. True или False. Является ли число палиндромом.
     """
     # write your code here
     n_0 = n  # сохраняем исходное число в n_0
-    pal_num = 0  # инициализируем будущее перевернутое num
+    pal_num = 0  # инициализируем будущее перевернутое число n
 
     while n:
-        rest = n % 10
-        n = n // 10
-        pal_num = pal_num * 10 + rest
+        rest = n % 10  # сохраняем разряд единиц
+        n = n // 10  # "отрезаем" один разряд справа у исходного числа
+        pal_num = pal_num * 10 + rest  # формируем перевернутое число
 
-    if pal_num == n_0:
+    if pal_num == n_0:  # проверка на палиндром
         return True
     else:
         return False
