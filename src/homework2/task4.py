@@ -13,12 +13,13 @@ def count_letters(str_):
                                               up_number - количество пописных.
     """
     # write your code here
-    low_number = 0
+    low_number = 0  # инициализируем счетчики строчных и прописных букв
     up_number = 0
     for char in str_:
-        if (ord(char) >= 65) & (ord(char) <= 90):
+        if 'A' <= char <= 'Z':  # проверяем прописные
             up_number += 1
-        if (ord(char) >= 97) & (ord(char) <= 122):
+            continue
+        if 'a' <= char <= 'z':  # проверяем строчные
             low_number += 1
     return (low_number, up_number)  # write return value here
 
