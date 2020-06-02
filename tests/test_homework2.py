@@ -9,6 +9,7 @@ from src.homework2.task2 import longest_word
 from src.homework2.task3 import sub_string
 from src.homework2.task4 import count_letters
 from src.homework2.task5 import fibonacci
+from src.homework2.task6 import palindrom
 
 
 @ddt.ddt
@@ -30,14 +31,14 @@ class TestHomework2(unittest.TestCase):
         self.assertEqual(total_sum(m, n, s), expected)
 
     @ddt.data(
-        ("", 0),
-        (punctuation, 0),
-        ("{} word wordd".format(punctuation), 5),
-        ("word wordd {} ".format(punctuation), 5),
-        ("word {} wordd  ".format(punctuation), 5),
-        (" {}    {}  ".format(punctuation, punctuation), 0),
-        ("{} wordddd {} wordd  ".format(punctuation, punctuation), 7),
-        ("word            wordd", 5),
+        ("", ""),
+        (punctuation, ""),
+        ("{} word wordd".format(punctuation), "wordd"),
+        ("word wordd {} ".format(punctuation), "wordd"),
+        ("word {} wordd  ".format(punctuation), "wordd"),
+        (" {}    {}  ".format(punctuation, punctuation), ""),
+        ("{} wordddd {} wordd  ".format(punctuation, punctuation), "wordddd"),
+        ("word            wordd", "wordd"),
     )
     @ddt.unpack
     def test_task2(self, str_, expected):
@@ -49,7 +50,7 @@ class TestHomework2(unittest.TestCase):
         (punctuation, punctuation),
         ("abc cde def", "abcdef"),
         ("asdfasdfadsf           s fd", "asdf"),
-        ("word {} wordd  ".format(punctuation), 5),
+        ("word {} wordd  ".format(punctuation), "word{}".format(punctuation)),
         (" {}    {}  ".format(punctuation, punctuation), punctuation),
         ("           ", ""),
         ("word            wordd", "word"),
@@ -94,9 +95,9 @@ class TestHomework2(unittest.TestCase):
         (2311323, False),
     )
     @ddt.unpack
-    def test_task6(self, str_, expected):
+    def test_task6(self, n, expected):
         """Task6. Number: {}, expected: {}"""
-        self.assertEqual(count_letters(str_), expected)
+        self.assertEqual(palindrom(n), expected)
 
 
 if __name__ == '__main__':
