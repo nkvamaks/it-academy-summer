@@ -24,8 +24,8 @@ def longest_word(str_):
     for index, word in enumerate(lst):  # ищем самое длинное слово
         if len(word) > max_len:
             max_index, max_len = index, len(word)
-    if not max_index:  # если пустая строка
-        return 0  # возвращаем 0
+    if not max_len:  # если пустая строка
+        return ''  # возвращаем пустую строку
     else:
         return lst[max_index]  # иначе - самое длинное слово
 
