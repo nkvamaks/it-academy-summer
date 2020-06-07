@@ -10,8 +10,8 @@ def tongues():
     figured out what language they are written in. Recently, due to programming
     work by a hacker known only by the code name ROT13, it has been discovered
     that Gandalf used nothing but a simple letter substitution scheme, and
-    further, that it is its own inverse|the same operation scrambles the message
-    as unscrambles it.
+    further, that it is its own inverse|the same operation scrambles the
+    message as unscrambles it.
 
     This operation is performed by replacing vowels in the sequence
     'a' 'i' 'y' 'e' 'o' 'u' with the vowel three advanced, cyclicly, while
@@ -31,8 +31,8 @@ def tongues():
     Your job is to write a function that decodes Gandalf's writings.
 
     #Input
-    The function will be passed a string for the function to decode. Each string
-    will contain up to 100 characters, representing some text written by
+    The function will be passed a string for the function to decode. Each
+    string will contain up to 100 characters, representing some text written by
     Gandalf. All characters will be plain ASCII, in the range space (32) to
     tilde (126).
 
@@ -83,36 +83,58 @@ def jumbled_string():
     return ''.join(s)
 
 
-"""Exercise 3: Valid Parentheses.
+def valid_parentheses():
+    """Exercise 3: Valid Parentheses.
 
-https://www.codewars.com/kata/52774a314c2333f0a7000688
-Write a function called that takes a string of parentheses, and determines if
-the order of the parentheses is valid. The function should return true if the
-string is valid, and false if it's invalid.
+    https://www.codewars.com/kata/52774a314c2333f0a7000688
+    Write a function called that takes a string of parentheses, and determines
+    if the order of the parentheses is valid. The function should return true
+    if the string is valid, and false if it's invalid.
 
-Examples
-"()"              =>  true
-")(()))"          =>  false
-"("               =>  false
-"(())((()())())"  =>  true
+    Examples
+    "()"              =>  true
+    ")(()))"          =>  false
+    "("               =>  false
+    "(())((()())())"  =>  true
 
-Constraints
-0 <= input.length <= 100
+    Constraints
+    0 <= input.length <= 100
 
-Along with opening (() and closing ()) parenthesis, input may contain any valid
-ASCII characters. Furthermore, the input string may be empty and/or not contain
-any parentheses at all. Do not treat other forms of brackets as parentheses
-(e.g. [], {}, <>).
-"""
+    Along with opening (() and closing ()) parenthesis, input may contain any
+    valid ASCII characters. Furthermore, the input string may be empty and/or
+    not contain any parentheses at all. Do not treat other forms of brackets
+    as parentheses (e.g. [], {}, <>).
+    """
+    print("Exercise 3: Valid Parentheses.")
+    str_ = input("Enter a String with Parentheses '()': ")
+    parenth = '()'  # for entry check
+    stack = []  # stack where parentheses will be saved
+    string_par = ''  # new string with just parentheses
+    for char in str_:  # get rid of junk and leave just parentheses
+        if char in parenth:
+            string_par += char
+    # general case
+    for par in string_par:
+        if par == '(':  # add any '(' in stack
+            stack.append(par)
+        elif stack:  # otherwise remove last '(' from stack
+            stack.pop(-1)  # if stack is not empty
+        else:  # case when string contains more ')' then '('
+            return False
+    if stack:  # case when string contains more '(' then ')'
+        return False
+    else:
+        return True  # case with a right parentheses or string w/o parentheses
 
 
 if __name__ == '__main__':
     # Run 'selector' of exercises
-    sel = {'1': tongues, '2': jumbled_string, 'Q': sys.exit, 'q': sys.exit}
+    sel = {'1': tongues, '2': jumbled_string, '3': valid_parentheses,
+           'Q': sys.exit, 'q': sys.exit}
     while True:
         try:
-            exercise_num = input('Input an Exercise Number (1-2) to Execute,'
-                                 ' Q/q - to Exit: ')
+            exercise_num = input('Input an Exercise Number (1-3) to Execute,'
+                                 ' Q/q - to Quit: ')
             print(sel[exercise_num]())
         except KeyError:
             print('Enter the Valid Number of Exercise!')
