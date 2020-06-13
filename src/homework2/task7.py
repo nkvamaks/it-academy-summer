@@ -127,13 +127,46 @@ def valid_parentheses():
         return True  # case with a right parentheses or string w/o parentheses
 
 
+def hex_string_to_RGB():
+    """Exercise 4: Convert A Hex String To RGB.
+
+    https://www.codewars.com/kata/5282b48bb70058e4c4000fa7
+    When working with color values it can sometimes be useful to extract the
+    individual red, green, and blue (RGB) component values for a color.
+    Implement a function that meets these requirements:
+
+    Accepts a case-insensitive hexadecimal color string as its parameter
+    (ex. "#FF9933" or "#ff9933")
+    Returns an object with the structure {r: 255, g: 153, b: 51} where r, g,
+    and b range from 0 through 255
+
+    Note: your implementation does not need to support the shorthand form of
+    hexadecimal notation (ie "#FFF")
+
+    Example:
+    "#FF9933" --> {r: 255, g: 153, b: 51}
+    """
+    import re
+
+    print("Exercise 4: Convert A Hex String To RGB.")
+    str_ = input("Enter a hexadecimal color string with a following format"
+                 " (e.g. #FF0056): ")
+    if re.match(r'#[0-9a-fA-F]{6}', str_):
+        r = str_[1:3]
+        g = str_[3:5]
+        b = str_[5:7]
+        return {'r': int(r, 16), 'g': int(g, 16), 'b': int(b, 16)}
+    else:
+        return "Entered string doesn't match the required format!"
+
+
 if __name__ == '__main__':
     # Run 'selector' of exercises
     sel = {'1': tongues, '2': jumbled_string, '3': valid_parentheses,
-           'Q': sys.exit, 'q': sys.exit}
+           '4': hex_string_to_RGB, 'Q': sys.exit, 'q': sys.exit}
     while True:
         try:
-            exercise_num = input('Input an Exercise Number (1-3) to Execute,'
+            exercise_num = input('Input an Exercise Number (1-4) to Execute,'
                                  ' Q/q - to Quit: ')
             print(sel[exercise_num]())
         except KeyError:
