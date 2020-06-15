@@ -1,6 +1,6 @@
 """Homework 1. Some Simple Programmes to Practice Python Style."""
-import re
 import random
+import re
 from time import localtime
 
 
