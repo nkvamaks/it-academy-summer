@@ -18,7 +18,7 @@ def longest_word(str_):
     # get rid of punctuation in the string and create a list of single words
     lst = str_.translate(str.maketrans('', '', string.punctuation)).split()
     # return longest word
-    return max(lst, key=len)
+    return '' if not lst else max(lst, key=len)
 
 
 if __name__ == '__main__':
