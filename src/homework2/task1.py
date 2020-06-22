@@ -16,12 +16,8 @@ def total_sum(m, n, s):
         'x rubles y kopecks'
     """
     # write your code here
-    m_1 = m * s  # общее количество рублей
-    n_1 = n * s  # общее количество копеек
-    if n_1 >= 100:  # 100 копеек == 1 рубль 0 копеек
-        m_1 += n_1 // 100
-        n_1 = n_1 % 100
-    return '{0} rubles {1} kopecks'.format(m_1, n_1)  # write return value here
+    sum = (100 * m + n) * s  # общая цена в копейках
+    return '{0} rubles {1} kopecks'.format(sum // 100, sum % 100)
 
 
 if __name__ == '__main__':

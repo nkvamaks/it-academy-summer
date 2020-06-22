@@ -14,20 +14,11 @@ def longest_word(str_):
         несколько, самое левое в строке).
     """
     # write your code here
-    str_1 = ''
-    for char in str_:  # убираем все не буквы и не пробелы
-        if char.isalpha() or char.isspace():
-            str_1 += char
-    lst = str_1.split()  # отделяем каждое слово
-    max_len = 0
-    max_index = 0
-    for index, word in enumerate(lst):  # ищем самое длинное слово
-        if len(word) > max_len:
-            max_index, max_len = index, len(word)
-    if not max_len:  # если пустая строка
-        return ''  # возвращаем пустую строку
-    else:
-        return lst[max_index]  # иначе - самое длинное слово
+    import string
+    # get rid of punctuation in the string and create a list of single words
+    lst = str_.translate(str.maketrans('', '', string.punctuation)).split()
+    # return longest word
+    return max(lst, key=len)
 
 
 if __name__ == '__main__':

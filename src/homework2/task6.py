@@ -23,13 +23,10 @@ def palindrom(n):
         n = n // 10  # "отрезаем" один разряд справа у исходного числа
         pal_num = pal_num * 10 + rest  # формируем перевернутое число
 
-    if pal_num == n_0:  # проверка на палиндром
-        return True
-    else:
-        return False
+    return True if pal_num == n_0 else False
 
 
 if __name__ == '__main__':
     # здесь можно сделать ввод из консоли и проверить работу функции
-    n = int(input("Введите целое положительное число:"))
+    n = int(input("Введите целое положительное число: "))
     print(palindrom(n))

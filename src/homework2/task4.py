@@ -13,15 +13,9 @@ def count_letters(str_):
                                               up_number - количество пописных.
     """
     # write your code here
-    low_number = 0  # инициализируем счетчики строчных и прописных букв
-    up_number = 0
-    for char in str_:
-        if 'A' <= char <= 'Z':  # проверяем прописные
-            up_number += 1
-            continue
-        if 'a' <= char <= 'z':  # проверяем строчные
-            low_number += 1
-    return (low_number, up_number)  # write return value here
+    low_number = sum((1 for char in str_ if char.islower()))
+    up_number = sum((1 for char in str_ if char.isupper()))
+    return (low_number, up_number)
 
 
 if __name__ == '__main__':

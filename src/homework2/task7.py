@@ -50,7 +50,7 @@ def tongues():
     print("Exercise 1: Gandalf's writings")
     # str_ = 'Ita dotf ni dyca nsaw ecc.'  # simple sample
     str_ = input('I was talking aloud to myself: ')
-    transdict = str_.maketrans(inseq, outseq)
+    transdict = str.maketrans(inseq, outseq)
     return str_.translate(transdict)  # Return translated string.
 
 
@@ -146,18 +146,13 @@ def hex_string_to_RGB():
     Example:
     "#FF9933" --> {r: 255, g: 153, b: 51}
     """
-    import re
-
     print("Exercise 4: Convert A Hex String To RGB.")
     str_ = input("Enter a hexadecimal color string with a following format"
                  " (e.g. #FF0056): ")
-    if re.match(r'#[0-9a-fA-F]{6}', str_):
-        r = str_[1:3]
-        g = str_[3:5]
-        b = str_[5:7]
-        return {'r': int(r, 16), 'g': int(g, 16), 'b': int(b, 16)}
-    else:
-        return "Entered string doesn't match the required format!"
+    r = str_[1:3]
+    g = str_[3:5]
+    b = str_[5:7]
+    return {'r': int(r, 16), 'g': int(g, 16), 'b': int(b, 16)}
 
 
 if __name__ == '__main__':
