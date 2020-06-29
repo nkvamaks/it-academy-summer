@@ -1,0 +1,14 @@
+5
+Russia Moscow Petersburg Omsk Novgorod Kaluga Paris Orenburg
+Ukraine Kiev Donetsk Odessa
+Belarus Minsk Soligorsk Brest Grodno
+USA Dallas Woodbridge Moscow Memphis
+France Marseille Paris Bordeaux Brest Nice
+7
+Kaluga
+Odessa
+Moscow
+Dallas
+Paris
+Novgorod
+Brest
