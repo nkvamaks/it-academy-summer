@@ -21,7 +21,6 @@ with open(filename) as f:
         country, *cities = f.readline().split()
         for city in cities:
             relation[city] = relation.get(city, []) + [country]
-    print(relation)
 
     # prints country(s) for the input cities
     for _M in range(int(f.readline())):
