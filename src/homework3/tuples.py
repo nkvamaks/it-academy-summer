@@ -19,7 +19,7 @@ print(lst_2, "\n")
 """
 3. Сделайте следующие присвоения одной строкой a = 'a', b=2, c=’python’.
 """
-a, b, c = ('a', 2, 'python')
+a, b, c = 'a', 2, 'python'
 print('Task 3:')
 print(a, b, c, "\n")
 

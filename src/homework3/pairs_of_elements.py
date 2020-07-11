@@ -7,19 +7,14 @@
 Выходные данные - количество пар.
 Важно: 1 1 1 - это 3 пары, 1 1 1 1 - это 6 пар
 """
-from math import factorial
 
 str_ = '1 abc 3 4 1 abc 1 1 abc , , , foo bar foo'
-dict_ = {}  # словарь для хранения элементов строки и их количества
-pairs = 0  # количество пар, инициализировано в 0
-# создаем словарь, хранящий элементы входной строки и их количества
+dict_ = {}  # stores element:count
+
 for elem in str_.split():
     dict_[elem] = dict_.get(elem, 0) + 1
-# очевидно, что если элемент 1, то он не парный и мы его не считаем
-# а когда элементов >= 2, то количество пар - это количество сочетаний
-# элементов из n по 2. Считаем по формуле: n! / (k! * (n - k)!), где k = 2
-for key in dict_:
-    if dict_[key] >= 2:
-        pairs += factorial(dict_[key]) / (2 * factorial(dict_[key] - 2))
+
+pairs = sum(map(lambda x: sum(range(1, dict_[x])), dict_))
+
 print("Входная строка -", str_)
-print("Количество пар в строке -", int(pairs))
+print("Количество пар в строке -", pairs)

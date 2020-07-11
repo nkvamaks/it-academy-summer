@@ -21,7 +21,8 @@ print(lst_2, "\n")
 ['1a', '2a', '3a', '4a'].
 """
 print('Task 3:')
-lst_3 = [str(n) + 'a' for n in range(1, 5)]
+# lst_3 = [str(n) + 'a' for n in range(1, 5)]
+lst_3 = [num + 'a' for num in '1234']
 print(lst_3, "\n")
 
 """
