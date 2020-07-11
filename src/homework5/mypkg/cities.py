@@ -1,7 +1,7 @@
 """Cities."""
 
 
-def cities(filename):
+def cities():
     """
     Города.
 
@@ -13,6 +13,7 @@ def cities(filename):
     городов, перечисленных выше. Программа возвращает страну(ы), где находится
     запрошенный город в виде строки.
     """
+    filename = 'test_cities.txt'
     relation = dict()  # stores relations: city-country(es)
     output = ''
 
