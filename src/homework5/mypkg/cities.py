@@ -15,7 +15,7 @@ def cities():
     """
     filename = 'test_cities.txt'
     relation = dict()  # stores relations: city-country(es)
-    output = ''
+    output = []
 
     with open(filename) as f:
         # from input file creates a sort of database with a relation
@@ -25,8 +25,8 @@ def cities():
             for city in cities:
                 relation[city] = relation.get(city, []) + [country]
 
-            # return country(s) for the input city(es)
+        # return country(s) for the input city(es)
         for _M in range(int(f.readline())):
             city = f.readline().strip()
-            output += ' '.join(relation.get(city)) + '\n'
-    return output
+            output.append(' '.join(relation[city]))
+    return '\n'.join(map(str, output))
