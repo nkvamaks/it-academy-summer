@@ -28,26 +28,28 @@ fn_fn = {fn_name: getattr(Runner, fn_name) for fn_name in dir(Runner)
 
 
 def counter(function):
+    """Store number of calls of functions in log file."""
 
     def wrapper(*args, **kwargs):
 
         def add_one_run(fns_counts):
+            """Add +1 for every runned function and save result in dict."""
             if args:
                 for fn_name in args:
-                    fns_counts[fn_name] = fns_counts.get(fn_name) + 1
+                    fns_counts[fn_name] = fns_counts.get(fn_name, 0) + 1
             else:
                 for fn_name in fn_fn:
-                    fns_counts[fn_name] = fns_counts.get(fn_name) + 1
+                    fns_counts[fn_name] = fns_counts.get(fn_name, 0) + 1
             return fns_counts
 
         def write_log(fns_counts):
-            temp = []
+            """Write dict into a log file."""
             with open(LOG_FILE, 'w') as fh:
-                for key, value in fns_counts.items():
-                    temp.append('{}={}'.format(key, value))
-                output = '\n'.join(temp)
+                output = '\n'.join(['{}={}'.format(key, value) for
+                                   key, value in fns_counts.items()])
                 fh.write(output)
 
+        # Open and load log file with existing values
         try:
             with open(LOG_FILE, 'r') as fh:
                 fns_counts = {}  # dict representation of LOG_FILE
@@ -57,10 +59,10 @@ def counter(function):
                 fns_counts = add_one_run(fns_counts)
                 write_log(fns_counts)
 
+        # Create new log file if it doesn't exist
         except FileNotFoundError:
             fns_counts = {key: 0 for key in fn_fn}
             fns_counts = add_one_run(fns_counts)
-
             write_log(fns_counts)
 
         return function(*args, **kwargs)
@@ -69,7 +71,7 @@ def counter(function):
 
 @counter
 def runner(*args):
-    """Run all functions taken as parameters / all functions as default."""
+    """Run functions taken as parameters / all functions as default."""
     if args:
         for func in args:
             print(fn_fn[func]())
@@ -79,6 +81,6 @@ def runner(*args):
 
 
 if __name__ == '__main__':
-    runner()
+    runner('cities')
     # print()
     # runner('dict_compr', 'lang', 'cities')
