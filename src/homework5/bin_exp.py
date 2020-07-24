@@ -1,8 +1,8 @@
-"""Ближайшая степень двойки."""
+"""Nearest power of two."""
 
 
 def bin_exp(num):
-    """Находит ближайшую степень двойки к введенному числу."""
+    """Find nearest power of two of input integer."""
     log = 0
     num0 = num
     while num:
@@ -12,8 +12,8 @@ def bin_exp(num):
 
 
 if __name__ == '__main__':
-    num = int(input('Введите целое положительное число: '))
-    print('Ближайшая степень двойки к введенному числу {}: '
+    num = int(input('Enter positive integer: '))
+    print('Nearest power of two of input integer {} is: '
           '{}'.format(num, 2**bin_exp(num)))
     # print('{}({})'.format(20, 2**bin_exp(20)))
     # print('{}({})'.format(6, 2**bin_exp(6)))
