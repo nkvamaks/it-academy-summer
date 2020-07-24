@@ -8,7 +8,7 @@ def bin_exp(num):
     while num:
         num >>= 1
         log += 1
-    return log-1 if abs(2**log - num0) >= abs(2**(log-1) - num0) else log
+    return log - 1 if abs(2**log - num0) >= abs(2**(log - 1) - num0) else log
 
 
 if __name__ == '__main__':

@@ -11,13 +11,13 @@ c. runner(‘func’, ‘func1’...) - вызывает все переданн
 class Runner:
     """Define class Runner."""
 
-    from mypkg.dict_comprehensions import dict_compr
     from mypkg.cities import cities
+    from mypkg.dict_comprehensions import dict_compr
+    from mypkg.euclid_gcd import euclid_gcd
+    from mypkg.languages import lang
     from mypkg.num_lists_1 import num_lists_1
     from mypkg.num_lists_2 import num_lists_2
-    from mypkg.languages import lang
     from mypkg.words import words
-    from mypkg.euclid_gcd import euclid_gcd
 
 
 LOG_FILE = 'log.txt'
