@@ -32,8 +32,8 @@ def imdb():
                 if res:
                     names.append(res.group(2))
                     ratings[res.group(1)] = ratings.get(res.group(1), 0) + 1
-                    years[int(res.group(3))] = years.get(
-                                                   int(res.group(3)), 0) + 1
+                    years[int(res.group(3))] = (
+                          years.get(int(res.group(3)), 0) + 1)
                     top250_count += 1
                     if top250_count >= TOP250:
                         break
@@ -46,12 +46,12 @@ def imdb():
 
     with open(fratings, 'wt', encoding='cp1252') as fh:
         fh.write('\n'.join(
-                 ['{} {}'.format(k, '*'*v) for k, v in ratings.items()]
+                 ['{} {}'.format(k, '*' * v) for k, v in ratings.items()]
                  ))
 
     with open(fyears, 'wt', encoding='cp1252') as fh:
         fh.write('\n'.join(
-                 ['{} {}'.format(k, '*'*v) for k, v in sorted(years.items())]
+                 ['{} {}'.format(k, '*' * v) for k, v in sorted(years.items())]
                  ))
 
 
