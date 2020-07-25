@@ -1,5 +1,4 @@
-"""
-Функция runner.
+"""Функция runner.
 
 Вызывает функции, написанные в homework4:
 a. runner() – все фукнции вызываются по очереди.
@@ -44,7 +43,7 @@ def counter(function):
 
         def write_log(fns_counts):
             """Write dict into a log file."""
-            with open(LOG_FILE, 'w') as fh:
+            with open(LOG_FILE, 'wt') as fh:
                 output = '\n'.join(['{}={}'.format(key, value) for
                                    key, value in fns_counts.items()])
                 fh.write(output)
@@ -82,5 +81,6 @@ def runner(*args):
 
 if __name__ == '__main__':
     runner('cities')
-    # print()
-    # runner('dict_compr', 'lang', 'cities')
+    runner('dict_compr', 'lang', 'cities')
+    runner('cities', 'cities', 'num_lists_1')
+    runner()

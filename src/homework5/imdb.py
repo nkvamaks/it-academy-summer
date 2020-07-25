@@ -1,17 +1,16 @@
-"""IMDB TOP250."""
+"""IMDB TOP250.
+
+В файле хранятся данные с сайта IMDB. Скопированные данные хранятся в файле
+./data5/ ratings.list.
+    a. Откройте и прочитайте файл(если его нет необходимо вывести ошибку).
+    b. Найдите ТОП250 фильмов и извлеките заголовки.
+    c. Программа создает 3 файла  top250_movies.txt – названия файлов,
+    ratings.txt – гистограмма рейтингов, years.txt – гистограмма годов.
+"""
 
 
 def imdb():
-    """
-    Обработка информации из файла с сайта IMDB.
-
-    Скопированные данные с сайта IMDB хранятся в файле './data5/ratings.list'
-    - Функция открывает и читает файл (если его нет, выводится ошибка).
-    - Находит ТОП250 фильмов.
-    - Создает 3 файла: top250_movies.txt – названия файлов,
-                       ratings.txt – гистограмма рейтингов,
-                       years.txt – гистограмма годов.
-    """
+    """Return 3 files with names of movies, hystograms of years and ratings."""
     import re
 
     TOP250 = 250
@@ -19,14 +18,14 @@ def imdb():
     top250_count = 0
     names, ratings, years = [], {}, {}
 
-    fimdb = './data5/ratings.list'
-    fnames = 'top250_movies.txt'
-    fratings = 'ratings.txt'
-    fyears = 'years.txt'
+    f_imdb = './data5/ratings.list'
+    f_names = 'top250_movies.txt'
+    f_ratings = 'ratings.txt'
+    f_years = 'years.txt'
 
     # Open source file, find top250 movies and save their data in vars
     try:
-        with open(fimdb, encoding='cp1252') as fh:
+        with open(f_imdb, encoding='cp1252') as fh:
             for line in fh:
                 res = re.search(pattern, line)
                 if res:
@@ -41,15 +40,15 @@ def imdb():
         print('File not found.')
 
     # Save data from vars into three different files
-    with open(fnames, 'wt', encoding='cp1252') as fh:
+    with open(f_names, 'wt', encoding='cp1252') as fh:
         fh.write('\n'.join(names))
 
-    with open(fratings, 'wt', encoding='cp1252') as fh:
+    with open(f_ratings, 'wt', encoding='cp1252') as fh:
         fh.write('\n'.join(
                  ['{} {}'.format(k, '*' * v) for k, v in ratings.items()]
                  ))
 
-    with open(fyears, 'wt', encoding='cp1252') as fh:
+    with open(f_years, 'wt', encoding='cp1252') as fh:
         fh.write('\n'.join(
                  ['{} {}'.format(k, '*' * v) for k, v in sorted(years.items())]
                  ))

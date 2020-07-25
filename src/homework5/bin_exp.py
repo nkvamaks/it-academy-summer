@@ -1,8 +1,12 @@
-"""Nearest power of two."""
+"""Nearest power of two.
+
+Написать программу которая находит ближайшую степень двойки к введенному числу.
+10(8), 20(16), 1(1), 13(16)
+"""
 
 
 def bin_exp(num):
-    """Find nearest power of two of input integer."""
+    """Find and return nearest power of two for the given integer."""
     log = 0
     num0 = num
     while num:
@@ -13,7 +17,7 @@ def bin_exp(num):
 
 if __name__ == '__main__':
     num = int(input('Enter positive integer: '))
-    print('Nearest power of two of input integer {} is: '
+    print('Nearest power of two for the input integer {} is: '
           '{}'.format(num, 2**bin_exp(num)))
     # print('{}({})'.format(20, 2**bin_exp(20)))
     # print('{}({})'.format(6, 2**bin_exp(6)))
