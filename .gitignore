@@ -109,4 +109,6 @@ venv.bak/
 .gitignore/
 
 #hw5
-data5/
+data5/ratings.list
+homework5/data5/ratings.list
+src/homework5/data5/ratings.list
