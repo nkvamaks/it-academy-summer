@@ -1,5 +1,4 @@
-"""
-Cities.
+"""Cities.
 
 Дан список стран и городов каждой страны. Затем даны названия городов. Для
 каждого города укажите, в какой стране он находится.
@@ -11,18 +10,18 @@ Cities.
 запрошенный город.
 """
 
-relation = dict()  # stores relations: city-country(es)
-filename = 'test_cities.txt'  # input file
 
+relation = dict()
+filename = 'test_cities.txt'
+
+# create a dict {city:[country1, ...]} from input file
 with open(filename) as f:
-    # from input file creates a sort of database with a relation
-    # city-country(es)
     for _N in range(int(f.readline())):
         country, *cities = f.readline().split()
         for city in cities:
             relation[city] = relation.get(city, []) + [country]
 
-    # prints country(s) for the input cities
+    # print country(s) for the input cities
     for _M in range(int(f.readline())):
         city = f.readline().strip()
         print(*relation.get(city))

@@ -1,21 +1,22 @@
-"""
-Greatest common divisor.
+"""Greatest common divisor.
 
 Даны два натуральных числа. Вычислите их наибольший общий делитель при помощи
 алгоритма Евклида (мы не знаем функции и рекурсию).
 """
-# input two natural numbers and save their initial values
-first_int = int(input("Input 1st natural number: "))
-second_int = int(input("Input 2nd natural number: "))
-first_saved, second_saved = first_int, second_int
 
-if first_int < second_int:
-    first_int, second_int = second_int, first_int
+
+# input
+int1 = int(input("Input 1st natural number: "))
+int2 = int(input("Input 2nd natural number: "))
+int1_init, int2_init = int1, int2
+
+if int1 < int2:
+    int1, int2 = int2, int1
 
 # Euclidian algorithm
-while second_int:
-    first_int, second_int = second_int, first_int % second_int
+while int2:
+    int1, int2 = int2, int1 % int2
 
 # output
 print("Greatest common divisor for {} and {} is {}"
-      "".format(first_saved, second_saved, first_int))
+      "".format(int1_init, int2_init, int1))

@@ -1,5 +1,4 @@
-"""
-Languages.
+"""Languages.
 
 Каждый из N школьников некоторой школы знает Mi языков. Определите, какие
 языки знают все школьники и языки, которые знает хотя бы один из школьников.
@@ -13,13 +12,15 @@ i-й школьник.
 языков, которые знает хотя бы один школьник, на следующих строках - список
 таких языков.
 """
+
+
 from functools import reduce
 
-lang_lst = []  # stores lists of languages that each student knows
-filename = 'test_languages.txt'  # input file
+lang_lst = []
+filename = 'test_languages.txt'
 
+# create a list of languages for each student from input file
 with open(filename) as f:
-    # from input file creates a sort of database of languages for each student
     for _N in range(int(f.readline())):
         lang_lst.append([])
         for _M in range(int(f.readline())):
@@ -29,6 +30,7 @@ with open(filename) as f:
 # languages that all students or at least one student know
 lang_all_know = reduce(lambda x, y: set(x) & set(y), lang_lst)
 lang_one_know = reduce(lambda x, y: set(x) | set(y), lang_lst)
+
 # output
 print(len(lang_all_know))
 print(*lang_all_know)
