@@ -1,0 +1,19 @@
+#Created with a command: $python3 decor.py > decor_listing.txt
+
+Function Works: 42/2=21.0
+***Function FAILED, remaining attempts - 4
+Function Works: 42/2=21.0
+Function Works: 42/1=42.0
+***Function FAILED, remaining attempts - 3
+Function Works: 42/1=42.0
+Function Works: 42/1=42.0
+Function Works: 42/2=21.0
+***Function FAILED, remaining attempts - 2
+Function Works: 42/2=21.0
+Function Works: 42/2=21.0
+Function Works: 42/1=42.0
+***Function FAILED, remaining attempts - 1
+Function Works: 42/1=42.0
+Function Works: 42/1=42.0
+***Function FAILED, remaining attempts - 0
+***Number of attempts expired. Exit.***
