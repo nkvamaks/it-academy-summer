@@ -44,7 +44,7 @@ if __name__ == '__main__':
         """Simulate function that drops down time to time."""
         from random import randint
         divis = randint(0, 2)
-        print('Function Works: {}/{}={}'.format(42, divis, 42/divis))
+        print('Function Works: {}/{}={}'.format(42, divis, 42 / divis))
 
     while True:
         func()
