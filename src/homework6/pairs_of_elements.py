@@ -11,11 +11,6 @@
 
 def pairs_elem(string):
     """Calculate number of pairs in the input string and return this number."""
-    try:
-        assert type(string) == str
-    except Exception:
-        return 'Incorrect input'
-
     elem_count = {}
 
     for elem in string.split():
