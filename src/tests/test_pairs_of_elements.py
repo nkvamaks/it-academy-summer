@@ -28,7 +28,7 @@ class TestPairs(unittest.TestCase):
         {'x': 1, 'foo': 22},
         {1, 'e', '5'},
         None,
-        )
+    )
     def test_pairs_elem_input_not_string(self, input_value):
         with self.assertRaises(AttributeError):
             pairs_elem(input_value)
