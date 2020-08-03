@@ -19,7 +19,6 @@ from functools import reduce
 lang_lst = []
 filename = 'test_languages.txt'
 
-# create a list of languages for each student from input file
 with open(filename) as f:
     for _N in range(int(f.readline())):
         lang_lst.append([])
@@ -27,11 +26,9 @@ with open(filename) as f:
             language = f.readline().strip()
             lang_lst[_N].append(language)
 
-# languages that all students or at least one student know
 lang_all_know = reduce(lambda x, y: set(x) & set(y), lang_lst)
 lang_one_know = reduce(lambda x, y: set(x) | set(y), lang_lst)
 
-# output
 print(len(lang_all_know))
 print(*lang_all_know)
 print(len(lang_one_know))

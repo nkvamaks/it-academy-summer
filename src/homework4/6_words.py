@@ -13,5 +13,6 @@ If Peter Piper picked a peck of pickled peppers,
 Where’s the peck of pickled peppers Peter Piper picked?"""
 
 num_different_words = len(set(input_string.split()))
+
 print("The following text:\n\n{}\n\nhas {} different words"
       "".format(input_string, num_different_words))

@@ -14,14 +14,12 @@
 relation = dict()
 filename = 'test_cities.txt'
 
-# create a dict {city:[country1, ...]} from input file
 with open(filename) as f:
     for _N in range(int(f.readline())):
         country, *cities = f.readline().split()
         for city in cities:
             relation[city] = relation.get(city, []) + [country]
 
-    # print country(s) for the input cities
     for _M in range(int(f.readline())):
         city = f.readline().strip()
         print(*relation.get(city))
