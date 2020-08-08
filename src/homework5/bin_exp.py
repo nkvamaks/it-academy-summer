@@ -19,11 +19,3 @@ if __name__ == '__main__':
     num = int(input('Enter positive integer: '))
     print('Nearest power of two for the input integer {} is: '
           '{}'.format(num, 2**bin_exp(num)))
-    # print('{}({})'.format(20, 2**bin_exp(20)))
-    # print('{}({})'.format(6, 2**bin_exp(6)))
-    # print('{}({})'.format(13, 2**bin_exp(13)))
-    # print('{}({})'.format(1, 2**bin_exp(1)))
-    # print('{}({})'.format(2, 2**bin_exp(2)))
-    # print('{}({})'.format(3, 2**bin_exp(3)))
-    # print('{}({})'.format(15, 2**bin_exp(15)))
-    # print('{}({})'.format(17, 2**bin_exp(17)))

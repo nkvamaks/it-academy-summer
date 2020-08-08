@@ -13,4 +13,4 @@ def num_lists_2():
     set1 = set(list1)
     set2 = set(list2)
     return ('Количество различных элементов в одном из'
-            ' списков - {}'.format(len(set1.difference(set2))))
+            ' списков - {}'.format(len(set1.symmetric_difference(set2))))

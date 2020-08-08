@@ -7,7 +7,6 @@ def euclid_gcd():
     Даны два натуральных числа. Вычислите их наибольший общий делитель при
     помощи алгоритма Евклида (мы не знаем функции и рекурсию).
     """
-    # input two natural numbers and save their initial values
     int1 = int(input("Input 1st natural number: "))
     int2 = int(input("Input 2nd natural number: "))
     saved1, saved2 = int1, int2
@@ -15,10 +14,8 @@ def euclid_gcd():
     if int1 < int2:
         int1, int2 = int2, int1
 
-    # Euclidian algorithm
     while int2:
         int1, int2 = int2, int1 % int2
 
-    # output
     return ("Greatest common divisor for {} and {} is {}"
             "".format(saved1, saved2, int1))

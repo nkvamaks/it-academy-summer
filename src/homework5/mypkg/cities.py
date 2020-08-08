@@ -13,18 +13,15 @@ def cities():
     запрошенный город в виде строки.
     """
     filename = 'test_cities.txt'
-    relation = dict()  # stores relations: city-country(es)
+    relation = dict()
     output = []
 
     with open(filename) as f:
-        # from input file creates a sort of database with a relation
-        # city-country(es)
         for _N in range(int(f.readline())):
             country, *cities = f.readline().split()
             for city in cities:
                 relation[city] = relation.get(city, []) + [country]
 
-        # return country(s) for the input city(es)
         for _M in range(int(f.readline())):
             city = f.readline().strip()
             output.append(' '.join(relation[city]))

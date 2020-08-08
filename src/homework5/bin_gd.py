@@ -18,7 +18,3 @@ if __name__ == '__main__':
     num = int(input('Enter positive integer: '))
     print('Greatest divisor with the power of two for the input integer {} is:'
           ' {}'.format(num, 2**bin_gd(num)))
-    # print('{}({})'.format(10, 2**bin_gd(10)))
-    # print('{}({})'.format(16, 2**bin_gd(16)))
-    # print('{}({})'.format(12, 2**bin_gd(12)))
-    # print('{}({})'.format(13, 2**bin_gd(13)))

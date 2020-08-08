@@ -1,33 +1,27 @@
 """Функция runner.
 
-Вызывает функции, написанные в homework4:
-a. runner() – все фукнции вызываются по очереди.
-b. runner(‘func_name’) – вызывается только функцию func_name.
-c. runner(‘func’, ‘func1’...) - вызывает все переданные функции.
+Оформите решение задач из прошлых домашних работ в функции. Напишите функцию
+runner. (все станет проще когда мы изучим модули, getattr и setattr)
+    a. runner() – все фукнции вызываются по очереди
+    b. runner(‘func_name’) – вызывается только функцию func_name.
+    c. runner(‘func’, ‘func1’...) - вызывает все переданные функции
 """
-
-
-class Runner:
-    """Define class Runner."""
-
-    from mypkg.cities import cities
-    from mypkg.dict_comprehensions import dict_compr
-    from mypkg.euclid_gcd import euclid_gcd
-    from mypkg.languages import lang
-    from mypkg.num_lists_1 import num_lists_1
-    from mypkg.num_lists_2 import num_lists_2
-    from mypkg.words import words
-
+from mypkg.cities import cities
+from mypkg.dict_comprehensions import dict_compr
+from mypkg.euclid_gcd import euclid_gcd
+from mypkg.languages import lang
+from mypkg.num_lists_1 import num_lists_1
+from mypkg.num_lists_2 import num_lists_2
+from mypkg.words import words
 
 LOG_FILE = 'log.txt'
 
-# stores 'function_name':<function_object> from imported modules
-fn_fn = {fn_name: getattr(Runner, fn_name) for fn_name in dir(Runner)
-         if not fn_name.startswith('__')}
+all_funcs = {fn_name: func for fn_name, func in locals().items()
+             if not fn_name.startswith('__') and callable(func)}
 
 
 def counter(function):
-    """Store number of calls of functions in log file."""
+    """Decorator that stores number of calls of 'function' in log file."""
 
     def wrapper(*args, **kwargs):
 
@@ -37,7 +31,7 @@ def counter(function):
                 for fn_name in args:
                     fns_counts[fn_name] = fns_counts.get(fn_name, 0) + 1
             else:
-                for fn_name in fn_fn:
+                for fn_name in all_funcs:
                     fns_counts[fn_name] = fns_counts.get(fn_name, 0) + 1
             return fns_counts
 
@@ -48,21 +42,17 @@ def counter(function):
                                    key, value in fns_counts.items()])
                 fh.write(output)
 
-        # Open and load log file with existing values
         try:
             with open(LOG_FILE, 'r') as fh:
-                fns_counts = {}  # dict representation of LOG_FILE
+                fns_counts = {}
                 for line in fh:
                     fn_name, count = line.strip().split('=')
                     fns_counts[fn_name] = int(count)
-                fns_counts = add_one_run(fns_counts)
-                write_log(fns_counts)
+                write_log(add_one_run(fns_counts))
 
-        # Create new log file if it doesn't exist
         except FileNotFoundError:
-            fns_counts = {key: 0 for key in fn_fn}
-            fns_counts = add_one_run(fns_counts)
-            write_log(fns_counts)
+            fns_counts = dict.fromkeys(all_funcs, 0)
+            write_log(add_one_run(fns_counts))
 
         return function(*args, **kwargs)
     return wrapper
@@ -70,17 +60,23 @@ def counter(function):
 
 @counter
 def runner(*args):
-    """Run functions taken as parameters / all functions as default."""
+    """Вызывает функции, из модулей директории mypkg.
+
+    a. runner() – все фукнции вызываются по очереди.
+    b. runner(‘func_name’) – вызывается только функцию func_name.
+    c. runner(‘func’, ‘func1’...) - вызывает все переданные функции.
+    """
     if args:
-        for func in args:
-            print(fn_fn[func]())
+        fn_fn = {arg: all_funcs.get(arg) for arg in args}
     else:
-        for func in fn_fn:
-            print(fn_fn[func]())
+        fn_fn = all_funcs.copy()
+
+    for func in fn_fn:
+        print(fn_fn[func]())
 
 
 if __name__ == '__main__':
-    runner('cities')
-    runner('dict_compr', 'lang', 'cities')
-    runner('cities', 'cities', 'num_lists_1')
     runner()
+    runner('dict_compr', 'lang', 'cities')
+    runner('words')
+
