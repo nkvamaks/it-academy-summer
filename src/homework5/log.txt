@@ -1,0 +1,7 @@
+cities=2
+dict_compr=2
+euclid_gcd=1
+lang=2
+num_lists_1=1
+num_lists_2=1
+words=2
