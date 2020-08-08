@@ -36,7 +36,8 @@ def imdb():
                     names.append(res.group(TITLE))
                     ratings[res.group(RATING)] = ratings.get(res.group(RATING),
                                                              0) + 1
-                    years[int(res.group(YEAR))] = years.get(int(res.group(YEAR)), 0) + 1
+                    years[int(res.group(YEAR))] = years.get(
+                        int(res.group(YEAR)), 0) + 1
                     top250_count += 1
                     if top250_count >= TOP250:
                         break
